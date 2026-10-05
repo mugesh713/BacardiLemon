@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIDLANEEXPORTS — ROOTED IN INDIA READY FOR THE WORLD.</title>
+  <meta name="description" content="Premium Indian spices, carefully sourced and prepared for international markets. Turmeric, cumin seeds, coriander seeds, red chilli and black pepper." />
+  <meta name="theme-color" content="#0b0b0f" /><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f0a81e'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-size='18' font-weight='bold' fill='%23111' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@300..700&family=Space+Mono:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+
+  <style>
+    /* ==========================================================================
+       INSIGHTS & ENHANCED CARD STYLING
+       ========================================================================== */
+    .cards--grid-3 {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .cards--grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cards--grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Base Enhanced Card Architecture */
+    .card--enhanced {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s ease,
+                  box-shadow 0.4s ease,
+                  background 0.4s ease;
+      will-change: transform;
+    }
+
+    /* Hover & Focus state */
+    .card--enhanced:hover {
+      transform: translateY(-8px) scale(1.01);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(240, 168, 30, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5),
+                  0 0 20px rgba(240, 168, 30, 0.15);
+      cursor: pointer;
+    }
+
+    /* Card Media Container & Zoom */
+    .card--enhanced .card__media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: #0b0b0f;
+    }
+
+    .card--enhanced .card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+      filter: brightness(0.9) contrast(1.05);
+    }
+
+    .card--enhanced:hover .card__media img {
+      transform: scale(1.08);
+      filter: brightness(1) contrast(1.1);
+    }
+
+    /* Floating Badges with Accent Dot */
+    .card--enhanced .card__tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(11, 11, 15, 0.75);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #f0a81e;
+      box-shadow: 0 0 6px #f0a81e;
+    }
+
+    /* Card Content Area */
+    .card--enhanced .card__body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 1.5rem;
+    }
+
+    .card--enhanced .card__meta {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    .card--enhanced .card__title {
+      font-size: 1.25rem;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .card--enhanced:hover .card__title {
+      color: #f0a81e;
+    }
+
+    .card--enhanced .body {
+      font-size: 0.925rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* Bottom CTA Link Inside Card */
+    .card--enhanced .card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.3s ease;
+    }
+
+    .card--enhanced .card__link .arrow {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card--enhanced:hover .card__link {
+      color: #f0a81e;
+    }
+
+    .card--enhanced:hover .card__link .arrow {
+      transform: translateX(6px);
+    }
+
+    /* Smooth Entrance Staggering Animation */
+    @keyframes cardFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cards--grid-3 .card--enhanced {
+      animation: cardFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--i, 0) * 0.12s);
+    }
+
+    /* ==========================================================================
+       FLOATING WHATSAPP BUTTON (RIGHT SIDE) — matches the provided screenshot
+       ========================================================================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: #25D366; /* WhatsApp brand green */
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.6);
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s ease;
+      animation: whatsappPulse 2.4s infinite;
+    }
+
+    /* Hover effect */
+    .whatsapp-float:hover {
+      transform: scale(1.1) translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 12px rgba(37, 211, 102, 0.2);
+      animation-play-state: paused;
+    }
+
+    /* WhatsApp SVG icon */
+    .whatsapp-float svg {
+      width: 34px;
+      height: 34px;
+      fill: #fff;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover svg {
+      transform: rotate(8deg) scale(1.05);
+    }
+
+    /* Tooltip bubble */
+    .whatsapp-float .whatsapp-tooltip {
+      position: absolute;
+      right: 76px;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+      background: #fff;
+      color: #111;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .whatsapp-float .whatsapp-tooltip::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 6px 0 6px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent #fff;
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* Pulsing glow animation */
+    @keyframes whatsappPulse {
+      0% {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 0 16px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Responsive: slightly smaller on mobile */
+    @media (max-width: 640px) {
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        bottom: 20px;
+        right: 20px;
+      }
+      .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+      }
+      .whatsapp-float .whatsapp-tooltip {
+        display: none; /* hide tooltip on small screens to avoid overlap */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+     MIDLANE EXPORTS — INTRO LOADER
+     ===================================================== -->
+
+<div class="ml-intro" id="mlIntro">
+
+  <!-- Background -->
+  <div class="ml-intro__background"></div>
+
+  <!-- Top information -->
+  <div class="ml-intro__top">
+    <span>MIDLANE / 01</span>
+    <span>GLOBAL EXPORT SYSTEM</span>
+  </div>
+
+  <!-- Brand -->
+  <div class="ml-intro__brand">
+
+    <div class="ml-intro__small">
+      <span></span>
+      INDIA / ORIGIN
+    </div>
+
+    <h1>
+      MIDLANE
+      <strong>EXPORTS</strong>
+    </h1>
+
+    <p>
+      ROOTED IN INDIA
+      <i></i>
+      READY FOR THE WORLD
+    </p>
+
+  </div>
+
+
+  <!-- Shipping route -->
+
+  <div class="ml-intro__route">
+
+    <div class="ml-intro__line"></div>
+
+    <div class="ml-intro__point ml-point--india">
+      <span></span>
+    </div>
+
+    <div class="ml-intro__point ml-point--ocean">
+      <span></span>
+    </div>
+
+    <div class="ml-intro__point ml-point--world">
+      <span></span>
+    </div>
+
+    <!-- Moving cargo -->
+    <div class="ml-intro__cargo">
+      <div></div>
+    </div>
+
+  </div>
+
+
+  <!-- Route labels -->
+
+  <div class="ml-intro__labels">
+
+    <div>
+      <b>01</b>
+      <strong>INDIA</strong>
+      <small>ORIGIN</small>
+    </div>
+
+    <div>
+      <b>02</b>
+      <strong>OCEAN</strong>
+      <small>TRANSIT</small>
+    </div>
+
+    <div>
+      <b>03</b>
+      <strong>WORLD</strong>
+      <small>DESTINATION</small>
+    </div>
+
+  </div>
+
+
+  <!-- Bottom -->
+
+  <div class="ml-intro__bottom">
+
+    <span>EXPORT / IMPORT</span>
+
+    <span>
+      <i></i>
+      ESTABLISHING CONNECTION
+    </span>
+
+  </div>
+
+</div>
+<header data-chrome="header" class="header data-header">
+  <div class="header__inner">
+  </div>
+</header>
+<nav data-chrome="drawer"></nav>
+
+<main id="top">
+
+<!-- ============================ 2.1 HERO ============================ -->
+<section class="act act--hero dark">
+  <div class="act__track act__track--hero" data-act-track>
+    <div class="act__pin">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="act__stage" data-gl="globe" aria-hidden="true"></div>
+
+      <div class="act__ui">
+        <div class="wrap hero__inner">
+          <div data-stage="0,0.52">
+            <span class="mono eyebrow">Indian spices · Global possibilities</span>
+            <h1 class="h-display hero__title">
+              <span class="line">ROOTED IN INDIA</span>
+              <span class="line line--indent"><em>READY FOR THE WORLD</em></span>
+            </h1>
+          </div>
+
+          <div class="hero__foot" data-stage="0.02,0.46">
+            <p class="lead hero__sub">
+              Premium Indian spices, carefully sourced and prepared for global
+              markets. From turmeric to cumin, coriander, red chilli and black
+              pepper, we connect India's agricultural richness with buyers
+              around the world.
+            </p>
+            <div class="hero__actions">
+              <a href="products.html" class="btn">EXPLORE OUR PRODUCTS <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="contact.html" class="btn btn--ghost">Talk to us</a>
+            </div>
+          </div>
+
+ <div class="hero__dive" data-stage="0.62,1.05">
+  <h2 class="h1">
+    <span class="dive-line">WE SOURCE SPICES</span>
+    <span class="dive-line">WE BUILD TRUST</span>
+  </h2>
+  <p class="lead">QUALITY BEGINS AT THE SOURCE.</p>
+</div>
+
+      <div class="scroll-hint mono"><span class="scroll-hint__line"></span><span>Scroll</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ticker" aria-hidden="true">
+  <div class="marquee" data-marquee data-speed="70">
+    <div class="marquee__track" data-marquee-track>
+      <span class="ticker__item mono">Turmeric</span>
+      <span class="ticker__item mono">Cumin seeds</span>
+      <span class="ticker__item mono">Coriander seeds</span>
+      <span class="ticker__item mono">Red chilli</span>
+      <span class="ticker__item mono">Black pepper</span>
+      <span class="ticker__item mono">Indian spices</span>
+      <span class="ticker__item mono">Global possibilities</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2.2 PROMISE + 2.3 CAPABILITY ==================== -->
+<section class="intro" aria-labelledby="intro-heading">
+  <div class="wrap">
+    <div class="intro__grid">
+      <div>
+        <span class="mono eyebrow">Our promise</span>
+        <h2 class="h1" id="intro-heading">
+  <div data-split-text>WE SOURCE SPICES</div>
+  <div data-split-text>WE BUILD TRUST</div>
+</h2>
+        <span class="rule" data-rule></span>
+      </div>
+      <div data-reveal>
+        <p class="lead" style="margin-bottom:1.75rem">
+          Quality begins at the source. We focus on carefully selected Indian
+          spices, clear specifications and dependable communication so
+          international buyers can source with greater confidence.
+        </p>
+        <a href="about.html" class="btn btn--outline">About us <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="capstrip" data-sweep>
+      <div class="cap">
+        <span class="cap__figure" data-cipher="5" data-pad="2">00</span>
+        <span class="cap__label mono">Core spice products</span>
+      </div>
+      <div class="cap">
+        <span class="cap__figure" data-cipher="1" data-pad="2">00</span>
+        <span class="cap__label mono">Primary focus — turmeric</span>
+      </div>
+      <div class="cap">
+        <span class="cap__figure">India</span>
+        <span class="cap__label mono">Sourcing-led business</span>
+      </div>
+      <div class="cap">
+        <span class="cap__figure">Global</span>
+        <span class="cap__label mono">Export-focused approach</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2.4 THE RANGE ======================= -->
+<section class="range-intro dark" id="range">
+  <!-- Unique Animated Overlapping Badge -->
+  <div class="range-badge" aria-hidden="true">
+    <svg viewBox="0 0 100 100" class="range-badge__text">
+      <path id="textCircle" d="M 50, 50 m -32, 0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" fill="none" />
+      <text font-size="9" font-family="monospace" letter-spacing="2.5" fill="var(--spice-gold, #f0a81e)">
+        <textPath href="#textCircle" startOffset="0%">PREMIUM INDIAN SPICES • EXPORT QUALITY • </textPath>
+      </text>
+    </svg>
+    <div class="range-badge__icon">✦</div>
+  </div>
+
+  <div class="wrap">
+    <div class="range-intro__grid">
+      <div class="range-intro__text" data-reveal>
+        <span class="mono eyebrow">Our products</span>
+        <h2 class="h-display">THE SPICE<br/>JOURNEY</h2>
+        <p class="lead" style="margin-top: 1.5rem;">From the fertile soils of India to the global market, we ensure every spice meets the highest standards of purity, aroma, and consistency.</p>
+        <a href="products.html" class="btn" style="margin-top: 2rem;">Explore the Range <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="range-intro__media" data-scale-in>
+        <div class="image-wrapper">
+            <img src="assets/photo/turmeric-farm.webp" alt="Spice farming in India" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="products" aria-labelledby="products-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="mono eyebrow">The range</span>
+        <h2 class="h1" id="products-heading" data-split-text>EVERYTHING STARTS WITH THE RIGHT SPICE</h2>
+      </div>
+      <a href="products.html" class="btn btn--outline">View all products <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <p class="lead intro-lede" data-reveal>
+      Our portfolio focuses on carefully selected Indian spices for
+      international food, processing, wholesale and distribution markets. We
+      begin with a focused range and aim to build dependable supply
+      relationships product by product.
+    </p>
+    <div class="pgrid" data-sweep data-product-cards></div>
+  </div>
+</section>
+
+<!-- ======================= 2.5 TURMERIC FEATURE ======================= -->
+<section class="feature">
+  <div class="wrap feature__grid">
+    
+    <!-- Automatic Rounded Carousel Container -->
+    <div class="feature__media feature__carousel" data-uncover data-carousel>
+      <div class="carousel__track" data-carousel-track>
+        
+        <div class="carousel__slide is-active">
+          <img src="assets/photo/turmeric-powers.jpg" width="1400" height="933" alt="Indian turmeric roots" loading="lazy" decoding="async" />
+        </div>
+        
+        <div class="carousel__slide">
+          <img src="assets/photo/turmeric-powder.webp" width="1400" height="933" alt="Pure Indian turmeric powder" loading="lazy" decoding="async" />
+        </div>
+        
+        <div class="carousel__slide">
+          <img src="assets/photo/turmeric-farm.webp" width="1400" height="933" alt="Freshly harvested turmeric" loading="lazy" decoding="async" />
+        </div>
+
+      </div>
+    </div>
+
+    <div class="feature__body" data-reveal>
+      <span class="mono eyebrow">Primary focus</span>
+      <h2 class="h1">THE GOLDEN SPICE<br />FROM INDIA</h2>
+      <p class="lead" style="margin:1.25rem 0 1.75rem">
+        Turmeric is at the heart of what we do. We source Indian turmeric with
+        attention to product quality, colour, aroma, cleanliness and buyer
+        requirements, with specifications agreed according to the destination
+        market and application.
+      </p>
+      <a href="turmeric.html" class="btn">Explore turmeric <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== 2.6 QUALITY (ACT) ========================== -->
+<section class="act act--lift dark" id="quality">
+  <div class="act__track act__track--lift" data-act-track>
+    <div class="act__pin">
+      <div class="act__stage" data-gl="lift" aria-hidden="true"></div>
+
+      <div class="act__ui wrap">
+        <div class="act__head" data-stage="0,0.34">
+          <span class="mono eyebrow">Quality</span>
+          <h2 class="h1">QUALITY AT EVERY STAGE</h2>
+        </div>
+
+        <div class="act__caption" data-range-caps>
+          <div class="act__cap" data-stage="0.06,0.36">
+            <span class="act__step">01</span>
+            <span class="mono act__label">Careful sourcing</span>
+            <p class="act__text">Quality does not begin when a product reaches the port. It begins with sourcing.</p>
+          </div>
+          <div class="act__cap" data-stage="0.36,0.66">
+            <span class="act__step">02</span>
+            <span class="mono act__label">Selection &amp; handling</span>
+            <p class="act__text">It continues through selection, responsible handling, packaging and shipment preparation.</p>
+          </div>
+          <div class="act__cap" data-stage="0.66,1.05">
+            <span class="act__step">03</span>
+            <span class="mono act__label">Export readiness</span>
+            <p class="act__text">Our approach is to understand buyer requirements clearly and coordinate each stage with care.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="act__progress"><i data-act-progress></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 2.7 WHY US ============================= -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why__grid">
+      <div>
+        <span class="mono eyebrow">Why us</span>
+        <h2 class="h1" data-split-text>WHY CHOOSE US?</h2>
+        <p class="body" style="margin-top:1.25rem;max-width:44ch">
+          We are building our business around a simple principle: international
+          trade works best when product quality and communication are treated
+          with equal importance.
+        </p>
+      </div>
+      <div class="why__list" data-why-list></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2.8 EXPORT PROCESS (ACT) ======================= -->
+<section class="act act--road dark" id="process">
+  <div class="act__track act__track--road" data-act-track>
+    <div class="act__pin">
+      <div class="act__stage" data-gl="road" aria-hidden="true"></div>
+
+      <div class="act__ui wrap">
+        <div class="act__head" data-stage="0,0.30">
+          <span class="mono eyebrow">Export process</span>
+          <h2 class="h1">FROM SOURCE<br>TO DESTINATION</h2>
+        </div>
+
+        <div class="act__side">
+          <div class="act__feat" data-stage="0.10,0.40">
+            <h3 class="h3">Discuss, then source</h3>
+            <p class="body">Share product, quantity, destination and specifications. We identify suitable supply based on the agreed requirement.</p>
+          </div>
+          <div class="act__feat" data-stage="0.40,0.68">
+            <h3 class="h3">Review and prepare</h3>
+            <p class="body">Confirm product characteristics, quantity and packaging, then coordinate packing and shipment preparation.</p>
+          </div>
+          <div class="act__feat" data-stage="0.68,1.05">
+            <h3 class="h3">Document and ship</h3>
+            <p class="body">Coordinate required trade and shipment documentation, dispatch through the agreed route, and keep you informed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="act__progress"><i data-act-progress></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <span class="mono eyebrow">A clear process</span>
+    <h2 class="h1" data-split-text>SO BUYERS KNOW WHAT TO EXPECT</h2>
+    <span class="rule" data-rule></span>
+    <ol class="steps" data-sweep data-process></ol>
+  </div>
+</section>
+
+<!-- ======================= 2.9 GLOBAL MARKETS (ACT) ======================= -->
+<section class="act act--departure dark" id="markets">
+  <div class="act__track act__track--departure" data-act-track>
+    <div class="act__pin">
+      <div class="act__stage" data-gl="departure" aria-hidden="true"></div>
+
+      <div class="act__ui wrap">
+        <div class="act__centre act__centre--low" data-stage="0,0.20">
+          <h2 class="h-display">FROM INDIA<br />TO GLOBAL MARKETS</h2>
+        </div>
+
+        <div class="act__quad" data-market-quad></div>
+
+        <div class="act__centre" data-stage="0.60,0.88">
+          <span class="mono eyebrow">Our ambition</span>
+          <h2 class="h1">CONNECTING INDIAN SPICES WITH INTERNATIONAL BUYERS</h2>
+          <p class="lead">India has a long-standing place in the global spice trade. Our aim is to connect carefully sourced Indian spices with importers, distributors, food manufacturers and other buyers.</p>
+        </div>
+
+        <div class="act__centre" data-stage="0.90,1.06">
+          <h2 class="h1">INDIAN SPICES GLOBAL POSSIBILITIES</h2>
+        </div>
+      </div>
+
+      <div class="act__progress"><i data-act-progress></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 2.10 BUYERS ============================= -->
+<section class="services" id="who-we-serve" aria-labelledby="who-we-serve-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="mono eyebrow">Who we serve</span>
+        <h2 class="h1" id="who-we-serve-heading" data-split-text>BUILT FOR GLOBAL BUYERS</h2>
+      </div>
+      <a href="markets.html" class="btn btn--outline">Export markets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <p class="lead intro-lede" data-reveal>
+      Our products can support a range of B2B requirements, from bulk importers
+      to food manufacturers and spice processors.
+    </p>
+    <div class="ind-grid" data-sweep data-buyers></div>
+  </div>
+</section>
+
+<!-- ============================ 2.11 INSIGHTS ============================ -->
+<section class="insights bg-alt" id="insights" aria-labelledby="insights-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="mono eyebrow">Insights</span>
+        <h2 class="h1" id="insights-heading" data-split-text>WHAT'S MOVING IN SPICES</h2>
+      </div>
+      <a href="insights.html" class="btn btn--outline">Read all insights <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <p class="lead intro-lede" data-reveal>
+      Practical perspectives on Indian spices, sourcing, quality, international
+      trade, and global market requirements.
+    </p>
+    
+  <section class="section articles-slider">
+  <div class="wrap">
+    <div class="cards-carousel">
+      <div class="cards-track">
+
+       <!-- CARD 01: Turmeric -->
+<article class="card card--slide">
+  <div class="card__inner">
+
+    <!-- FRONT FACE -->
+    <div class="card__face card__face--front">
+      <img
+        class="card__bg-img"
+        src="assets/photo/turmeric.webp"
+        alt="Turmeric"
+        loading="lazy"
+      />
+
+      <div class="card__overlay overlay--purple"></div>
+
+      <div class="card__front-content">
+        <div>
+          <span class="card__tag">Premium Spice</span>
+          <div class="card__meta">01</div>
+          <h3 class="card__title">Premium Turmeric</h3>
+          <p class="card__desc">
+            Rich color, natural aroma, export-grade quality.
+          </p>
+        </div>
+
+        <div class="card__btn">LEARN MORE &rarr;</div>
+      </div>
+    </div>
+
+    <!-- BACK FACE -->
+    <div class="card__face card__face--back">
+      <div>
+        <div class="card__back-header">
+          <span class="card__tag card__tag--back">Premium Quality</span>
+          <span class="card__number">01</span>
+        </div>
+
+        <h3 class="card__title--back">Turmeric</h3>
+
+        <p class="card__desc--back">
+          Carefully sourced Indian turmeric selected for its natural
+          color, aroma and consistent quality for international markets.
+        </p>
+
+        <div class="card__specs">
+          <div class="spec-row">
+            <span class="spec-label">FORM</span>
+            <span class="spec-value">Whole / Powder</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">SUPPLY</span>
+            <span class="spec-value">Bulk</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">ORIGIN</span>
+            <span class="spec-value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__back-footer">
+        <span class="btn-back">&larr; BACK</span>
+        <a class="btn-details" href="#">VIEW DETAILS &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+
+<!-- CARD 02: Coriander Seed -->
+<article class="card card--slide">
+  <div class="card__inner">
+
+    <!-- FRONT FACE -->
+    <div class="card__face card__face--front">
+      <img
+        class="card__bg-img"
+        src="assets/photo/coriander.webp"
+        alt="Coriander Seed"
+        loading="lazy"
+      />
+
+      <div class="card__overlay overlay--amber"></div>
+
+      <div class="card__front-content">
+        <div>
+          <span class="card__tag">Whole Spice</span>
+          <div class="card__meta">02</div>
+          <h3 class="card__title">Premium Coriander Seed</h3>
+          <p class="card__desc">
+            Aromatic, naturally sourced and export ready.
+          </p>
+        </div>
+
+        <div class="card__btn">LEARN MORE &rarr;</div>
+      </div>
+    </div>
+
+    <!-- BACK FACE -->
+    <div class="card__face card__face--back">
+      <div>
+        <div class="card__back-header">
+          <span class="card__tag card__tag--back">Natural Sourcing</span>
+          <span class="card__number">02</span>
+        </div>
+
+        <h3 class="card__title--back">Coriander Seed</h3>
+
+        <p class="card__desc--back">
+          Premium Indian coriander seeds with natural aroma and
+          consistent quality, suitable for food manufacturers and
+          international spice markets.
+        </p>
+
+        <div class="card__specs">
+          <div class="spec-row">
+            <span class="spec-label">FORM</span>
+            <span class="spec-value">Whole Seed</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">SUPPLY</span>
+            <span class="spec-value">Bulk</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">ORIGIN</span>
+            <span class="spec-value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__back-footer">
+        <span class="btn-back">&larr; BACK</span>
+        <a class="btn-details" href="#">VIEW DETAILS &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+
+<!-- CARD 03: Cardamom -->
+<article class="card card--slide">
+  <div class="card__inner">
+
+    <!-- FRONT FACE -->
+    <div class="card__face card__face--front">
+      <img
+        class="card__bg-img"
+        src="assets/photo/cardamom.webp"
+        alt="Cardamom"
+        loading="lazy"
+      />
+
+      <div class="card__overlay overlay--orange"></div>
+
+      <div class="card__front-content">
+        <div>
+          <span class="card__tag">Premium Grade</span>
+          <div class="card__meta">03</div>
+          <h3 class="card__title">Green Cardamom</h3>
+          <p class="card__desc">
+            Fragrant, fresh and carefully selected.
+          </p>
+        </div>
+
+        <div class="card__btn">LEARN MORE &rarr;</div>
+      </div>
+    </div>
+
+    <!-- BACK FACE -->
+    <div class="card__face card__face--back">
+      <div>
+        <div class="card__back-header">
+          <span class="card__tag card__tag--back">Export Grade</span>
+          <span class="card__number">03</span>
+        </div>
+
+        <h3 class="card__title--back">Cardamom</h3>
+
+        <p class="card__desc--back">
+          Premium Indian green cardamom selected for its distinctive
+          fragrance, natural appearance and consistent quality.
+        </p>
+
+        <div class="card__specs">
+          <div class="spec-row">
+            <span class="spec-label">FORM</span>
+            <span class="spec-value">Whole Pods</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">GRADE</span>
+            <span class="spec-value">Export Grade</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">ORIGIN</span>
+            <span class="spec-value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__back-footer">
+        <span class="btn-back">&larr; BACK</span>
+        <a class="btn-details" href="#">VIEW DETAILS &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+
+<!-- CARD 04: Cumin Seed -->
+<article class="card card--slide">
+  <div class="card__inner">
+
+    <!-- FRONT FACE -->
+    <div class="card__face card__face--front">
+      <img
+        class="card__bg-img"
+        src="assets/photo/cumin.webp"
+        alt="Cumin Seed"
+        loading="lazy"
+      />
+
+      <div class="card__overlay overlay--green"></div>
+
+      <div class="card__front-content">
+        <div>
+          <span class="card__tag">Whole Spice</span>
+          <div class="card__meta">04</div>
+          <h3 class="card__title">Premium Cumin Seed</h3>
+          <p class="card__desc">
+            Distinctive aroma, clean and export grade.
+          </p>
+        </div>
+
+        <div class="card__btn">LEARN MORE &rarr;</div>
+      </div>
+    </div>
+
+    <!-- BACK FACE -->
+    <div class="card__face card__face--back">
+      <div>
+        <div class="card__back-header">
+          <span class="card__tag card__tag--back">Export Quality</span>
+          <span class="card__number">04</span>
+        </div>
+
+        <h3 class="card__title--back">Cumin Seed</h3>
+
+        <p class="card__desc--back">
+          Carefully selected Indian cumin seeds known for their
+          distinctive aroma, natural flavor and reliable quality.
+        </p>
+
+        <div class="card__specs">
+          <div class="spec-row">
+            <span class="spec-label">FORM</span>
+            <span class="spec-value">Whole Seed</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">PURITY</span>
+            <span class="spec-value">Export Grade</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">ORIGIN</span>
+            <span class="spec-value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__back-footer">
+        <span class="btn-back">&larr; BACK</span>
+        <a class="btn-details" href="#">VIEW DETAILS &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+
+<!-- CARD 05: Red Chilli -->
+<article class="card card--slide">
+  <div class="card__inner">
+
+    <!-- FRONT FACE -->
+    <div class="card__face card__face--front">
+      <img
+        class="card__bg-img"
+        src="assets/photo/chilli.webp"
+        alt="Red Chilli"
+        loading="lazy"
+      />
+
+      <div class="card__overlay overlay--purple"></div>
+
+      <div class="card__front-content">
+        <div>
+          <span class="card__tag">Indian Spice</span>
+          <div class="card__meta">05</div>
+          <h3 class="card__title">Premium Red Chilli</h3>
+          <p class="card__desc">
+            Vibrant color, balanced heat and export quality.
+          </p>
+        </div>
+
+        <div class="card__btn">LEARN MORE &rarr;</div>
+      </div>
+    </div>
+
+    <!-- BACK FACE -->
+    <div class="card__face card__face--back">
+      <div>
+        <div class="card__back-header">
+          <span class="card__tag card__tag--back">Premium Selection</span>
+          <span class="card__number">05</span>
+        </div>
+
+        <h3 class="card__title--back">Red Chilli</h3>
+
+        <p class="card__desc--back">
+          Quality Indian red chillies selected for their vibrant color,
+          natural flavor and consistent quality for global markets.
+        </p>
+
+        <div class="card__specs">
+          <div class="spec-row">
+            <span class="spec-label">FORM</span>
+            <span class="spec-value">Whole / Powder</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">SUPPLY</span>
+            <span class="spec-value">Bulk</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">ORIGIN</span>
+            <span class="spec-value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__back-footer">
+        <span class="btn-back">&larr; BACK</span>
+        <a class="btn-details" href="#">VIEW DETAILS &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+
+<!-- CARD 06: Black Pepper -->
+<article class="card card--slide">
+  <div class="card__inner">
+
+    <!-- FRONT FACE -->
+    <div class="card__face card__face--front">
+      <img
+        class="card__bg-img"
+        src="assets/photo/pepper.webp"
+        alt="Black Pepper"
+        loading="lazy"
+      />
+
+      <div class="card__overlay overlay--amber"></div>
+
+      <div class="card__front-content">
+        <div>
+          <span class="card__tag">Premium Spice</span>
+          <div class="card__meta">06</div>
+          <h3 class="card__title">Premium Black Pepper</h3>
+          <p class="card__desc">
+            Bold aroma, natural flavor and export quality.
+          </p>
+        </div>
+
+        <div class="card__btn">LEARN MORE &rarr;</div>
+      </div>
+    </div>
+
+    <!-- BACK FACE -->
+    <div class="card__face card__face--back">
+      <div>
+        <div class="card__back-header">
+          <span class="card__tag card__tag--back">Export Grade</span>
+          <span class="card__number">06</span>
+        </div>
+
+        <h3 class="card__title--back">Black Pepper</h3>
+
+        <p class="card__desc--back">
+          Premium Indian black peppercorns selected for their bold
+          aroma, natural flavor and consistent quality for global trade.
+        </p>
+
+        <div class="card__specs">
+          <div class="spec-row">
+            <span class="spec-label">FORM</span>
+            <span class="spec-value">Whole Peppercorns</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">SUPPLY</span>
+            <span class="spec-value">Bulk</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">ORIGIN</span>
+            <span class="spec-value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__back-footer">
+        <span class="btn-back">&larr; BACK</span>
+        <a class="btn-details" href="#">VIEW DETAILS &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer data-chrome="footer"></footer>
+<script type="module" src="/src/main.js"></script>
+
+<!-- ============================================================
+     FLOATING WHATSAPP BUTTON (RIGHT SIDE)
+     ============================================================ -->
+<a
+  href="https://wa.me/919444182024?text=Hello%20MIDLANE%20EXPORTS%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20export%20services."
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp"
+>
+  <!-- Tooltip -->
+  <span class="whatsapp-tooltip">Chat with us</span>
+
+  <!-- WhatsApp SVG icon -->
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M16.004 3C8.832 3 3 8.832 3 16.004c0 2.292.6 4.442 1.648 6.304L3.08 29.08l7.008-1.536A12.94 12.94 0 0 0 16.004 29C23.176 29 29 23.168 29 16.004 29 8.832 23.176 3 16.004 3zm0 23.6c-1.984 0-3.84-.536-5.44-1.472l-.392-.232-4.16.912.888-4.056-.256-.408A10.48 10.48 0 0 1 5.4 16.004C5.4 10.152 10.152 5.4 16.004 5.4S26.6 10.152 26.6 16.004 21.848 26.6 16.004 26.6z"/>
+    <path d="M21.2 18.184c-.288-.144-1.704-.84-1.968-.936-.264-.096-.456-.144-.648.144-.192.288-.744.936-.912 1.128-.168.192-.336.216-.624.072-.288-.144-1.216-.448-2.316-1.428-.856-.764-1.432-1.708-1.6-1.996-.168-.288-.018-.444.126-.588.13-.13.288-.336.432-.504.144-.168.192-.288.288-.48.096-.192.048-.36-.024-.504-.072-.144-.648-1.56-.888-2.136-.234-.56-.472-.484-.648-.492l-.552-.01c-.192 0-.504.072-.768.36-.264.288-1.008.984-1.008 2.4s1.032 2.784 1.176 2.976c.144.192 2.032 3.104 4.92 4.352.688.296 1.224.472 1.644.604.69.22 1.318.188 1.814.114.554-.082 1.704-.696 1.944-1.368.24-.672.24-1.248.168-1.368-.072-.12-.264-.192-.552-.336z"/>
+  </svg>
+</a>
+</body>
+</html>
