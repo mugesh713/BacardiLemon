@@ -29,6 +29,7 @@ export default defineConfig({
     allowedHosts: ['imp-zqjh.onrender.com'],
     allowedHosts: ['midlaneexports.onrender.com'],
     allowedHosts: ['midlaneexports-wbhs.onrender.com'],
+    allowedHosts: ['bacardilemon.onrender.com'],
   },
 
   build: {
