@@ -47,9 +47,14 @@ export function initNav() {
 
     // Close the mobile menu after selecting any menu item.
     drawer.addEventListener('click', (event) => {
-      const link = event.target.closest('a');
+      const link = event.target instanceof Element ? event.target.closest('a') : null;
       if (link) closeMenu();
     });
+
+    // Reset a menu left open when the viewport changes between mobile and desktop.
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) closeMenu();
+    }, { passive: true });
   }
 
   // Close with Escape for accessibility.

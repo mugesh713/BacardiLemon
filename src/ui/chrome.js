@@ -51,8 +51,7 @@ function headerHTML(here) {
       <img src="${BRAND.logo}" alt="${BRAND.short || ''}" class="site-logo-img" />
     </a>
     <nav class="nav" aria-label="Main navigation">${links}</nav>
-    <a href="contact.html" class="btn header__cta">Send an enquiry <span class="arrow" aria-hidden="true">→</span></a>
-    <button class="burger" data-burger aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span></button>
+    <button class="burger" data-burger aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button>
   </div>`;
 }
 
@@ -90,7 +89,6 @@ function footerHTML() {
           Share your product, quantity, packaging and destination and we will
           review the requirement and reply.
         </p>
-        <a href="contact.html" class="btn btn--ghost" style="margin-top:1rem">Send an enquiry <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -99,6 +97,15 @@ function footerHTML() {
       <span>${BRAND.tagline}</span>
     </div>
   </div>`;
+}
+
+function chatHTML() {
+  return `
+    <aside class="site-chat" aria-label="MIDLANE contact options">
+      <a class="site-chat__whatsapp" href="${CONTACT.phoneHref}" target="_blank" rel="noopener" aria-label="Chat with MIDLANE on WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.54 0 .22 5.32.22 11.87c0 2.09.55 4.13 1.59 5.92L.12 24l6.36-1.67a11.85 11.85 0 0 0 5.6 1.42h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.45-8.38ZM12.09 21.7h-.01a9.84 9.84 0 0 1-5.02-1.37l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.84 9.84 0 0 1-1.51-5.19c0-5.42 4.41-9.83 9.84-9.83a9.8 9.8 0 0 1 6.96 2.88 9.82 9.82 0 0 1 2.88 6.97c0 5.41-4.4 9.82-9.81 9.82Zm5.39-7.36c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.19.29-.75.95-.92 1.14-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.58-.9-2.17-.24-.57-.48-.49-.66-.5h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43 0 1.43 1.04 2.81 1.19 3 .15.2 2.04 3.11 4.94 4.36.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>
+      </a>
+    </aside>`;
 }
 
 /** Keyboard and touch support for the products submenu. */
@@ -155,4 +162,5 @@ export function initChrome() {
   if (word) word.textContent = BRAND.name;
 
   wireSubnav();
+  document.body.insertAdjacentHTML('beforeend', chatHTML());
 }

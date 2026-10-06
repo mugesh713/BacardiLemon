@@ -110,7 +110,7 @@ export const PRODUCTS = [
     considers: ['Appearance', 'Aroma', 'Pungency', 'Consistency'],
   },
   {
-    slug: 'cardamom', name: 'Cardamom', file: 'cardamom.html',
+    slug: 'cardamom', name: 'Cardamom', file: 'cardamom.html', imageWide: 'cardamom.webp',
     headline: ['Queen of spices.'], latin: 'Elettaria cardamomum', accent: '#4a7c59',
     lede: 'Indian cardamom selected for aroma, size, pod color, and freshness according to buyer requirements.',
     forms: ['Whole green cardamom pods'],

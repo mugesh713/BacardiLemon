@@ -76,13 +76,6 @@ export function initContent() {
       <p class="body">${esc(body)}</p>
     </article>`).join(''));
 
-  // Departure act: market *categories*, staged across the pull-back.
-  fill('[data-market-quad]', MARKET_CATEGORIES.slice(0, 4).map((m, i) => `
-    <div class="act__q" data-stage="${(0.20 + i * 0.04).toFixed(2)},0.54">
-      <h3 class="h4">${esc(m)}</h3>
-      <p class="body">Enquiries reviewed against the product, destination and applicable requirements.</p>
-    </div>`).join(''));
-
   // Markets page: the full category list.
   fill('[data-market-list]', MARKET_CATEGORIES.map((m, i) => `
     <article class="ind" data-tilt>
@@ -95,7 +88,7 @@ export function initContent() {
   fill('[data-product-rows]', PRODUCTS.map((p) => `
     <article class="prod" style="--pc:${p.accent}" data-reveal>
       <div class="prod__media" data-uncover>
-        <img src="assets/photo/${p.slug}-wide.webp" width="1400" height="933"
+        <img src="assets/photo/${p.imageWide || `${p.slug}-wide.webp`}" width="1400" height="933"
              alt="${esc(p.name)}" loading="lazy" decoding="async" />
       </div>
       <div class="prod__body">

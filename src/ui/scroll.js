@@ -36,6 +36,8 @@ export function initScroll() {
       if (lenis) lenis.scrollTo(target, { offset: -80 });
       else target.scrollIntoView({ behavior: 'smooth' });
       document.documentElement.classList.remove('nav-open');
+      const burger = document.querySelector('[data-burger]');
+      if (burger) burger.setAttribute('aria-expanded', 'false');
     });
   });
 

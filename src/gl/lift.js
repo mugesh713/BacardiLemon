@@ -78,9 +78,9 @@ export class Lift {
 
   _buildStack() {
     // Door-end cutouts, stood on the deck in a short stack.
-    this.blue = makeSprite('assets/container-blue.webp', 4.2);
-    this.orange = makeSprite('assets/container-orange.webp', 4.2);
-    this.grey = makeSprite('assets/container-grey.webp', 3.6);
+    this.blue = makeSprite('/assets/container-blue.webp', 4.2);
+    this.orange = makeSprite('/assets/container-orange.webp', 4.2);
+    this.grey = makeSprite('/assets/container-grey.webp', 3.6);
 
     // The reach stacker's boom reaches to the LEFT in the artwork, so the stack
     // sits to its left and the machine works in from the right.
@@ -112,13 +112,13 @@ export class Lift {
 
   _buildMachine() {
     // Sized so the spreader at the boom tip lands just above the stack.
-    this.machine = makeSprite('assets/reach-stacker.webp', MACHINE_H);
+    this.machine = makeSprite('/assets/reach-stacker.webp', MACHINE_H);
     this.machine.position.set(30, MACHINE_H / 2, 1.5);
     this.machine.renderOrder = 4;
     this.root.add(this.machine);
 
     // A crane holding the skyline behind the yard.
-    this.crane = makeSprite('assets/crane.webp', 9);
+    this.crane = makeSprite('/assets/crane.webp', 9);
     this.crane.position.set(14, 4.5, -26);
     this.crane.renderOrder = 2;     // skyline, behind the working plant
     this.root.add(this.crane);
